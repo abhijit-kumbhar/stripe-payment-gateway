@@ -76,7 +76,7 @@ const CartDetails = () => {
         const headers = {
             "Content-Type":"application/json"
         }
-        const response = await fetch("https://stripe-payment-api-one.vercel.app",{
+        const response = await fetch("https://stripe-payment-gateway-self.vercel.app/api/create-checkout-session",{
             method:"POST",
             headers:headers,
             body:JSON.stringify(body)
