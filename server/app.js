@@ -32,7 +32,7 @@ app.post("/api/create-checkout-session",async(req,res)=>{
         payment_method_types:["card"],
         line_items:lineItems,
         mode:"payment",
-        success_url:"https://stripe-payment-api-one.vercel.app/success",
+        success_url:"https://stripe-payment-gateway-self.vercel.app/success",
         cancel_url:"https://stripe-payment-gateway-self.vercel.app/cancel",
     });
 
@@ -40,7 +40,8 @@ app.post("/api/create-checkout-session",async(req,res)=>{
  
 })
 
+const port = process.env.PORT || 7000;
 
-app.listen(7000,()=>{
-    console.log("server is started")
+app.listen(port,()=>{
+    console.log(`server is started port`)
 })
