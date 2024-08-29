@@ -5,7 +5,11 @@ const cors = require("cors");
 const stripe = require("stripe")("sk_test_51PpoqS2LLGtvsxfAU2JtiAyAnxheH1eGmG0mVdSHiBarsH2l8wkaXz0rJBo8FSdj3fXCj5Z9lLD7mb0q0REECAUv00FxJQ9ssZ");
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: "https://stripe-payment-gateway-self.vercel.app/",
+    methods:["POST", "GET", "PUT", "DELETE"],
+    credentials: true
+}));
 
 // checkout api
 app.post("/api/create-checkout-session",async(req,res)=>{
@@ -28,7 +32,7 @@ app.post("/api/create-checkout-session",async(req,res)=>{
         payment_method_types:["card"],
         line_items:lineItems,
         mode:"payment",
-        success_url:"http://localhost:3001/sucess",
+        success_url:"https://stripe-payment-api-one.vercel.app/success",
         cancel_url:"http://localhost:3001/cancel",
     });
 
